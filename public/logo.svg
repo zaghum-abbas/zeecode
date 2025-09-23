@@ -1,0 +1,30 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle cx="20" cy="20" r="18" fill="url(#logoGradient)" />
+  
+  <!-- Letter Z -->
+  <path d="M12 12 L28 12 L28 16 L18 16 L18 20 L26 20 L26 24 L12 24 Z" fill="white" />
+  
+  <!-- Code brackets -->
+  <path d="M8 14 L6 16 L8 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <path d="M32 14 L34 16 L32 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- Small dots for tech feel -->
+  <circle cx="14" cy="28" r="1.5" fill="white" opacity="0.7" />
+  <circle cx="20" cy="28" r="1.5" fill="white" opacity="0.7" />
+  <circle cx="26" cy="28" r="1.5" fill="white" opacity="0.7" />
+</svg>
