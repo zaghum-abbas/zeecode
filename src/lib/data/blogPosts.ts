@@ -11,7 +11,8 @@ export const blogPosts = [
     author: "Sarah Johnson",
     publishedAt: "2024-12-15",
     readingTime: "12 min read",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&crop=center",
   },
   {
     id: 2,
@@ -31,7 +32,8 @@ export const blogPosts = [
     author: "Michael Chen",
     publishedAt: "2024-12-10",
     readingTime: "15 min read",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&crop=center",
   },
   {
     id: 3,
@@ -50,7 +52,8 @@ export const blogPosts = [
     author: "Emily Rodriguez",
     publishedAt: "2024-12-05",
     readingTime: "10 min read",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop&crop=center",
   },
   {
     id: 4,
@@ -70,7 +73,8 @@ export const blogPosts = [
     author: "David Kim",
     publishedAt: "2024-11-28",
     readingTime: "14 min read",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=600&fit=crop&crop=center",
   },
   {
     id: 5,
@@ -90,7 +94,8 @@ export const blogPosts = [
     author: "Lisa Thompson",
     publishedAt: "2024-11-20",
     readingTime: "11 min read",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop&crop=center",
   },
   {
     id: 6,
@@ -110,6 +115,7 @@ export const blogPosts = [
     author: "James Wilson",
     publishedAt: "2024-11-15",
     readingTime: "16 min read",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=center",
   },
 ];

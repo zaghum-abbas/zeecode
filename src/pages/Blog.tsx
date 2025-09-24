@@ -97,13 +97,13 @@ const Blog = () => {
               {filteredPosts.map((post) => (
                 <article key={post.id} className="group">
                   <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-elegant group-hover:scale-[1.02]">
-                    <div className="aspect-video bg-gradient-secondary rounded-t-lg flex items-center justify-center mb-4">
-                      <div className="text-center">
-                        <div className="text-4xl mb-2">📝</div>
-                        <p className="text-sm text-muted-foreground">
-                          {post.category}
-                        </p>
-                      </div>
+                    <div className="aspect-video rounded-t-lg overflow-hidden mb-4">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
                     </div>
 
                     <CardHeader className="pb-2">

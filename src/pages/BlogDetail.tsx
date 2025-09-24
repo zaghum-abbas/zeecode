@@ -14,6 +14,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { blogPosts } from "@/lib/data/blogPosts";
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -21,73 +22,12 @@ const BlogDetail = () => {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
 
-  // This would normally come from an API or state management
-  const posts = [
-    {
-      id: "1",
-      title: "The Future of Web Development: What to Expect in 2024",
-      excerpt:
-        "Explore the latest trends and technologies shaping the future of web development, from AI integration to new frameworks.",
-      content: `
-        <h2>Introduction</h2>
-        <p>The web development landscape is evolving at an unprecedented pace. As we navigate through 2024, several key trends are reshaping how we build, deploy, and interact with web applications. From artificial intelligence integration to revolutionary new frameworks, the future of web development promises to be more exciting and dynamic than ever before.</p>
-        
-        <h2>AI-Powered Development Tools</h2>
-        <p>Artificial Intelligence is no longer just a buzzword in web development. Tools like GitHub Copilot, ChatGPT, and specialized AI coding assistants are becoming integral parts of the developer workflow. These tools are helping developers write more efficient code, catch bugs early, and even generate entire components with simple prompts.</p>
-        
-        <p>The impact extends beyond just code generation. AI is revolutionizing testing, optimization, and user experience design. Smart algorithms can now predict user behavior, optimize loading times, and even suggest UI improvements based on real user data.</p>
-        
-        <h2>The Rise of Edge Computing</h2>
-        <p>Edge computing is transforming how we think about web application architecture. By processing data closer to the user, edge computing reduces latency and improves performance significantly. This trend is particularly important for applications requiring real-time interactions.</p>
-        
-        <h2>Modern JavaScript Frameworks</h2>
-        <p>The JavaScript ecosystem continues to evolve with new frameworks and libraries emerging regularly. React Server Components, Next.js App Router, and SvelteKit are pushing the boundaries of what's possible with modern web applications.</p>
-        
-        <p>These technologies are making it easier to build fast, scalable applications while providing better developer experience and improved performance out of the box.</p>
-        
-        <h2>Progressive Web Apps (PWAs) Evolution</h2>
-        <p>PWAs are becoming more sophisticated, offering native app-like experiences through the web. With improved offline capabilities, push notifications, and seamless installation processes, PWAs are bridging the gap between web and mobile applications.</p>
-        
-        <h2>Conclusion</h2>
-        <p>The future of web development is bright and full of possibilities. As these technologies mature and new ones emerge, developers who stay current with these trends will be well-positioned to build the next generation of web applications that are faster, smarter, and more user-friendly than ever before.</p>
-      `,
-      category: "Web Development",
-      author: "Sarah Johnson",
-      date: "March 15, 2024",
-      readTime: "8 min read",
-      image:
-        "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800&h=400&fit=crop",
-      featured: true,
-    },
-    {
-      id: "2",
-      title: "Building Scalable Cloud Infrastructure: Best Practices",
-      excerpt:
-        "Learn how to design and implement cloud infrastructure that can scale with your business needs while maintaining performance.",
-      content: `
-        <h2>Understanding Scalability</h2>
-        <p>Scalability is the ability of your infrastructure to handle increased load without compromising performance. In cloud computing, this means designing systems that can automatically adjust resources based on demand.</p>
-        
-        <h2>Architecture Patterns</h2>
-        <p>Microservices architecture, containerization, and serverless computing are key patterns for building scalable cloud infrastructure. Each approach has its benefits and use cases.</p>
-        
-        <h2>Monitoring and Optimization</h2>
-        <p>Continuous monitoring and optimization are crucial for maintaining scalable infrastructure. Tools like CloudWatch, Datadog, and New Relic provide insights into performance bottlenecks.</p>
-      `,
-      category: "Cloud Computing",
-      author: "Michael Chen",
-      date: "March 12, 2024",
-      readTime: "12 min read",
-      image:
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
-      featured: false,
-    },
-    // Add other posts as needed...
-  ];
+  // Use shared blog posts data
+  const posts = blogPosts;
 
-  const post = posts.find((p) => p.id === id) || posts[0];
+  const post = posts.find((p) => p.id.toString() === id) || posts[0];
   const relatedPosts = posts
-    .filter((p) => p.id !== post.id && p.category === post.category)
+    .filter((p) => p.id.toString() !== id && p.category === post.category)
     .slice(0, 3);
 
   useEffect(() => {
@@ -106,15 +46,15 @@ const BlogDetail = () => {
         "@type": "Organization",
         name: "Zeecode",
       },
-      datePublished: post.date,
-      dateModified: post.date,
+      datePublished: post.publishedAt,
+      dateModified: post.publishedAt,
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": window.location.href,
       },
       url: window.location.href,
       wordCount: post.content.split(" ").length,
-      timeRequired: post.readTime,
+      timeRequired: post.readingTime,
       articleSection: post.category,
       keywords: `${post.category}, software development, technology, ${post.author}`,
     };
@@ -183,7 +123,7 @@ const BlogDetail = () => {
         <meta property="og:url" content={window.location.href} />
         <meta property="og:image" content={post.image} />
         <meta property="article:author" content={post.author} />
-        <meta property="article:published_time" content={post.date} />
+        <meta property="article:published_time" content={post.publishedAt} />
         <meta property="article:section" content={post.category} />
 
         {/* Twitter Card tags */}
@@ -232,11 +172,11 @@ const BlogDetail = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
-                  {post.date}
+                  {new Date(post.publishedAt).toLocaleDateString()}
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
-                  {post.readTime}
+                  {post.readingTime}
                 </div>
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-4 w-4" />
